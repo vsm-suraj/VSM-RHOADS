@@ -1,0 +1,71 @@
+@font-face{
+    font-family: 'roboto';
+    src: local('☺'),url('../fonts/roboto/Roboto-Medium.ttf')format('truetype');
+    /* font-weight: normal;
+    font-style: normal; */
+}
+
+
+*{
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: 'roboto' 
+}
+
+
+.mainContainer{
+    text-align: center;
+    background: #f1f1f1;
+}
+.col-sm-2 {
+    margin: 48px;
+    color: #414141;
+    border: 1px solid #b9b9b9;
+    border-radius: 0;
+    background: #ffffff;
+    height: 255px;
+    width: 255px;
+    display: inline-block;
+    text-align: left;
+    overflow: hidden;
+}
+button{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    background: #00ace6;
+    color: #fff;
+}
+.delete-dict {
+    position: absolute;
+    right: 1px;
+    border-radius: 0 !important;
+    top: 1px;
+}
+.delete-row, .delete-dict {
+    margin: -1px;
+    padding: 0;
+    background-color: #ff3300;
+    border-radius: 20px;
+    width: 17px;
+    height: 17px;
+    line-height: 16px;
+    display: inline-block;
+    text-indent: 5px;
+    color: #fafafa;
+    line-height: 15px;
+}
+.jumbotron {
+    background-color: #fafafa;
+}
+
+li{
+    list-style: none;
+}
+ul{
+    padding: 0;
+}

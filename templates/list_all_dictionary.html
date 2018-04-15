@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../lib/css/bootstrap/bootstrap-3-3-7.min.css">
+    <link rel="stylesheet" href="../css/list-all-dictionary.css">
+    <link rel="stylesheet" href="../css/popup-page.css">
+    <link rel="stylesheet" href="../css/popup-page2.css">
+</head>
+
+<body>
+    <div ng-controller="list_all_dictionary_ctrl">
+
+
+        <!-- UPDATE DICTIONARY -->
+        <div>
+            <!-- The Modal -->
+            <div class="modal" ng-class="{'active': update_value_popup}">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <span class="close">&times;</span> -->
+                        <h3>UPDATE VALUE</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="create-dict-container">
+                            <div>
+                                <form>
+                                    <input type="text" placeholder="Value:" class="create-dict-input-box" ng-model="new_value">
+                                    <br>
+                                    <input type="submit" value="Update" class="create-dict-button" ng-click="update_dict_value( key_id, dictionary_id, word, new_value )">
+                                    <input type="button" value="Cancel" class="cancel-dict-button" ng-click="hide_popup()">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- add new value to dictionary -->
+        <div>
+            <!-- The Modal -->
+            <div class="modal" ng-class="{'active': add_new_value_popup}">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <span class="close">&times;</span> -->
+                        <h3>ADD NEW VALUE TO DICTIONARY</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="create-dict-container">
+                            <div>
+                                <form>
+                                    <input type="text" placeholder="Word:" class="create-dict-input-box" ng-model="new_word">
+                                    <br>
+                                    <input type="text" placeholder="Value:" class="create-dict-input-box" ng-model="new_value">
+                                    <br>
+                                    <input type="submit" value="Add" class="create-dict-button" ng-click="add_new_value_to_dict( new_word, new_value, dictionary_id)">
+                                    <input type="button" value="Cancel" class="cancel-dict-button" ng-click="hide_popup()">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- Create new dictionary-->
+        <button ng-click="create_dict_popup()">CREATE DICTIONARY</button>
+        <div>
+            <!-- The Modal -->
+            <div class="modal" ng-class="{'active': show_popup}">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <span class="close">&times;</span> -->
+                        <h3>CREATE DICTIONARY</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="create-dict-container">
+                            <div>
+                                <form>
+                                    <input type="text" placeholder="Dictionary name:" class="create-dict-input-box" ng-model="dictionary_name">
+                                    <br>
+                                    <input type="submit" value="Create" class="create-dict-button" ng-click="create_dict(dictionary_name)">
+                                    <input type="button" value="Cancel" class="cancel-dict-button" ng-click="hide_popup()">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Listing dictionary -->
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2" ng-repeat="dictionary in dictionaries">
+                        <a href="#">
+                            <span class="delete-dict" ng-click="delete_dict(dictionary._id)">x</span>
+                        </a>
+                        <h3 ng-click="add_value_to_dict_popup(dictionary._id)">Name: {{dictionary.dictionary_name}} </h3>
+                        <ul>
+                            <li ng-repeat=" word in dictionary.list" >
+                                <span ng-click = "update_dict_value_popup( word.key_id, dictionary._id, word.key )" >{{word.key}} : {{word.value}}</span>
+                                <a href="#" style="color: whitesmoke">
+                                    <span class="delete-row" ng-click="delete_row( word.key_id, dictionary._id )">x</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../lib/js/angularJS/angular.min.js"></script>
+    <script src="../lib/js/angularJS/angular-cookies.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers/list_all_dictionary_ctrl.js"></script>
+    <script src="../js/services/display_all_dict_data_service.js"></script>
+    <script src="../js/services/create_dict_service.js"></script>
+    <script src="../js/services/add_new_value_to_dict_services.js"></script>
+    <script src="../js/services/update_dict_value_service.js"></script>
+    <script src="../js//services/delete_raw_service.js"></script>
+    <script src="../js/services/delete_dict_service.js"></script>
+</body>
+
+</html>
